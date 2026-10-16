@@ -1,0 +1,20 @@
+# Config used to produce web/public/demo.json:
+#   labelaudit prepare --config configs/agnews-demo.toml
+# Values not listed here use the defaults in src/labelaudit/config.py.
+seed = 0
+
+[data]
+n_train = 20000
+n_test = 4000
+
+[noise]
+mode = "class_dependent"
+rate = 0.1
+# Row = true class, column = label it is flipped to.
+# Classes: World, Sports, Business, Sci/Tech. Flips favour confusions annotators make.
+flip_targets = [
+    [0.0, 0.2, 0.5, 0.3],
+    [0.6, 0.0, 0.2, 0.2],
+    [0.4, 0.1, 0.0, 0.5],
+    [0.2, 0.1, 0.7, 0.0],
+]

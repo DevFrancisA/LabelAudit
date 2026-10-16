@@ -208,4 +208,4 @@ class RunPaths:
 
     @property
     def cleaned(self) -> Path:
-        return self.root / "audit" / "cleaned.jsonl"
+        return self.root / "audit" / "cleaned.csv"
