@@ -1,4 +1,4 @@
-import { useId, useMemo, useState } from "react";
+import { useId, useMemo, useState, type CSSProperties } from "react";
 import type { AuditData } from "../lib/data";
 import { combine, flagRates, ranking, selectFlags } from "../lib/scoring";
 import { FlagRateTable } from "./FlagRateTable";
@@ -19,9 +19,12 @@ const PAGE = 25;
 
 const RANK_OPTIONS: { value: RankBy; label: string; hint: string }[] = [
   { value: "combined", label: "Combined", hint: "Blend of both signals" },
-  { value: "a", label: "Signal A only", hint: "Confident learning" },
-  { value: "b", label: "Signal B only", hint: "Loss trajectory" },
+  { value: "a", label: "Signal A", hint: "Confident learning only" },
+  { value: "b", label: "Signal B", hint: "Loss trajectory only" },
 ];
+
+/** Track fill for a styled range input, as a percentage of its span. */
+const fill = (value: number, max: number): CSSProperties => ({ "--fill": `${max > 0 ? (value / max) * 100 : 0}%` }) as CSSProperties;
 
 function quantile(values: number[], q: number): number {
   if (values.length === 0) return 1;
@@ -128,6 +131,7 @@ export function Workspace({ data, buildCsv, fileName, revealable = false }: Work
               max={100}
               step={5}
               value={blend}
+              style={fill(blend, 100)}
               aria-valuetext={`${blend}% signal A, ${100 - blend}% signal B`}
               onChange={(event) => setBlend(Number(event.target.value))}
             />
@@ -148,6 +152,7 @@ export function Workspace({ data, buildCsv, fileName, revealable = false }: Work
               min={0}
               max={n}
               value={flagCount}
+              style={fill(flagCount, n)}
               aria-labelledby={`${ids.flags}-label`}
               onChange={(event) => {
                 setFlagCount(Number(event.target.value));
@@ -175,7 +180,7 @@ export function Workspace({ data, buildCsv, fileName, revealable = false }: Work
 
         <div className="control">
           <label className="check">
-            <input type="checkbox" checked={capOn} onChange={(event) => setCapOn(event.target.checked)} />
+            <input type="checkbox" role="switch" checked={capOn} onChange={(event) => setCapOn(event.target.checked)} />
             <span>Cap flags per class</span>
           </label>
           {capOn && (
@@ -215,6 +220,7 @@ export function Workspace({ data, buildCsv, fileName, revealable = false }: Work
           <label className="check">
             <input
               type="checkbox"
+              role="switch"
               checked={showUnflagged}
               onChange={(event) => {
                 setShowUnflagged(event.target.checked);
