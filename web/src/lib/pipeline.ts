@@ -36,7 +36,6 @@ export const DEFAULT_OPTIONS: BrowserAuditOptions = {
 export interface BrowserAuditResult {
   suggested: number[];
   selfConfidence: number[];
-  normalizedMargin: number[];
   meanLoss: number[];
   lateLoss: number[];
   forgetting: number[];
@@ -124,7 +123,6 @@ export function runBrowserAudit(
   return {
     suggested: cl.suggested,
     selfConfidence: cl.selfConfidence,
-    normalizedMargin: cl.normalizedMargin,
     meanLoss: stats.meanLoss,
     lateLoss: stats.lateLoss,
     forgetting: stats.forgetting,
