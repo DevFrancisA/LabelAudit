@@ -59,7 +59,6 @@ def site_payload(
             "given": train.labels[picked].tolist(),
             "suggested": result.suggested[picked].tolist(),
             "selfConfidence": _rounded(result.self_confidence[picked], 4),
-            "normalizedMargin": _rounded(result.normalized_margin[picked], 4),
             "meanLoss": _rounded(result.mean_loss[picked], 3),
             "lateLoss": _rounded(result.late_loss[picked], 3),
             "forgetting": _rounded(result.forgetting[picked], 3),
