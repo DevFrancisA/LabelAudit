@@ -1,0 +1,105 @@
+{
+  "about": "Hand-computed toy example shared by the Python tests and the TypeScript tests so both implementations must agree. Every expected value was worked out by hand, not produced by either implementation.",
+  "num_classes": 3,
+  "labels": [0, 0, 0, 0, 1, 1, 1, 1, 2, 2, 2, 2, 2],
+  "pred_probs": [
+    [0.7, 0.2, 0.1],
+    [0.6, 0.3, 0.1],
+    [0.1, 0.7, 0.2],
+    [0.2, 0.2, 0.6],
+    [0.1, 0.8, 0.1],
+    [0.3, 0.6, 0.1],
+    [0.5, 0.4, 0.1],
+    [0.2, 0.2, 0.6],
+    [0.1, 0.1, 0.8],
+    [0.2, 0.1, 0.7],
+    [0.42, 0.53, 0.05],
+    [0.3, 0.3, 0.4],
+    [0.42, 0.46, 0.12]
+  ],
+  "confident_learning": {
+    "thresholds": [0.4, 0.5, 0.414],
+    "confident_label": [0, 0, 1, 2, 1, 1, 0, 2, 2, 2, 1, -1, 0],
+    "confident_joint": [
+      [2, 1, 1],
+      [1, 2, 1],
+      [1, 1, 2]
+    ],
+    "calibrated_joint": [
+      [2, 1, 1],
+      [1, 2, 1],
+      [1.25, 1.25, 2.5]
+    ],
+    "estimated_issues_per_class": [2, 2, 2.5],
+    "estimated_issues": 7,
+    "suggested_labels": [0, 0, 1, 2, 1, 1, 0, 2, 2, 2, 1, 2, 0],
+    "self_confidence": [0.7, 0.6, 0.1, 0.2, 0.8, 0.6, 0.4, 0.2, 0.8, 0.7, 0.05, 0.4, 0.12],
+    "normalized_margin": [0.5, 0.3, -0.6, -0.4, 0.7, 0.3, -0.1, -0.4, 0.7, 0.5, -0.48, 0.1, -0.34],
+    "self_confidence_order": [10, 2, 12, 3, 7, 6, 11, 1, 5, 0, 9, 4, 8]
+  },
+  "rank_normalize": {
+    "input": [3, 1, 4, 1, 5],
+    "expected": [0.5, 0.125, 0.75, 0.125, 1.0]
+  },
+  "ranking": {
+    "mean_loss": [0.4, 0.6, 2.1, 1.5, 0.3, 0.6, 0.9, 1.5, 0.3, 0.4, 2.4, 1.0, 1.2],
+    "weight_a": 0.6,
+    "weight_b": 0.4,
+    "signal_a_twelfths": [2.5, 4.5, 11, 8.5, 0.5, 4.5, 6.5, 8.5, 0.5, 2.5, 12, 6.5, 10],
+    "loss_only_twelfths": [2.5, 4.5, 11, 9.5, 0.5, 4.5, 6, 9.5, 0.5, 2.5, 12, 7, 8],
+    "combined_twelfths": [2.5, 4.5, 11, 8.9, 0.5, 4.5, 6.3, 8.9, 0.5, 2.5, 12, 6.7, 9.2],
+    "combined_order": [10, 2, 12, 3, 7, 11, 6, 1, 5, 0, 9, 4, 8]
+  },
+  "cleaning": [
+    { "n_flag": 5, "class_cap": null, "flagged": [10, 2, 12, 3, 7] },
+    { "n_flag": 5, "class_cap": 0.25, "flagged": [10, 2, 7] },
+    { "n_flag": 5, "class_cap": 0.4, "flagged": [10, 2, 12, 7] },
+    { "n_flag": 0, "class_cap": null, "flagged": [] }
+  ],
+  "flag_rates_for_first_cleaning_case": [
+    { "label": 0, "total": 4, "flagged": 2 },
+    { "label": 1, "total": 4, "flagged": 1 },
+    { "label": 2, "total": 5, "flagged": 2 }
+  ],
+  "trajectories": {
+    "about": "losses and correct are indexed [seed][epoch][example]; correct means the model's top class equals the given label",
+    "losses": [
+      [
+        [1.0, 1.2, 2.0],
+        [0.5, 1.5, 2.2],
+        [0.3, 1.0, 2.4],
+        [0.2, 1.4, 2.6]
+      ],
+      [
+        [0.8, 1.3, 1.9],
+        [0.4, 1.1, 1.7],
+        [0.2, 1.6, 1.5],
+        [0.2, 1.2, 1.8]
+      ]
+    ],
+    "correct": [
+      [
+        [0, 1, 0],
+        [1, 0, 0],
+        [1, 1, 0],
+        [1, 0, 0]
+      ],
+      [
+        [1, 1, 0],
+        [1, 0, 0],
+        [0, 1, 0],
+        [1, 0, 1]
+      ]
+    ],
+    "late_fraction": 0.5,
+    "mean_loss": [0.45, 1.2875, 2.0125],
+    "late_loss": [0.225, 1.3, 2.075],
+    "forgetting": [0.5, 2, 2],
+    "trajectory": [
+      [0.9, 0.45, 0.25, 0.2],
+      [1.25, 1.3, 1.3, 1.3],
+      [1.95, 1.95, 1.95, 2.2]
+    ],
+    "signal_b": [0, 0.5, 1]
+  }
+}
