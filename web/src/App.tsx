@@ -80,24 +80,19 @@ export function App() {
         Skip to content
       </a>
       <header className="masthead">
-        <div className="masthead-inner">
-          <p className="wordmark">LabelAudit</p>
-          <ThemeToggle />
+        <div className="topbar">
+          <div className="wrap topbar-inner">
+            <p className="wordmark">LabelAudit</p>
+            <ThemeToggle />
+          </div>
         </div>
-        <h1>
-          Find the training labels that are probably{" "}
-          <span className="circled">
-            wrong
-            <svg viewBox="0 0 120 52" preserveAspectRatio="none" aria-hidden="true">
-              <path d="M8 30C6 14 40 5 66 6c28 1 50 9 48 23-2 15-38 20-62 19C26 47 7 41 9 27c1-7 9-12 17-15" />
-            </svg>
-          </span>
-          .
-        </h1>
-        <p className="tagline">
-          Rank every example by how likely its label is a mistake, see the evidence, and export a cleaned CSV. Everything
-          on this page runs in your browser.
-        </p>
+        <div className="wrap hero">
+          <h1>Find the training labels that are probably wrong.</h1>
+          <p className="tagline">
+            Rank every example by how likely its label is a mistake, see the evidence, and export a cleaned CSV.
+            Everything on this page runs in your browser.
+          </p>
+        </div>
       </header>
 
       <main id="main">
@@ -136,10 +131,12 @@ export function App() {
       </main>
 
       <footer className="footer">
-        <p>
-          LabelAudit is open source under the MIT license.{" "}
-          <a href="https://github.com/DevFrancisA/LabelAudit">Source, Python pipeline, and method notes on GitHub</a>.
-        </p>
+        <div className="wrap footer-inner">
+          <p>LabelAudit is open source under the MIT license.</p>
+          <a className="button-primary" href="https://github.com/DevFrancisA/LabelAudit">
+            Source, Python pipeline, and method notes on GitHub
+          </a>
+        </div>
       </footer>
     </>
   );
